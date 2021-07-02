@@ -1,0 +1,155 @@
+//*------------------*
+//*  カラーとフォント
+//*------------------*
+
+//color
+$base-color:#000;
+$font-color:#000;
+$font-color__white:#FFFFFF;
+
+//font-family
+//-->ヒラギノver.
+$font-main: 'Noto Sans JP', sans-serif;
+
+//*------------------*
+//*  レスポンシブ
+//*------------------*
+
+//ブレイクポイント
+$tb: 768px; //タブレット
+$mb: 375px; //スマホ
+
+//@mediaのフォーマット
+// タブレット
+@mixin tablet {
+  @media screen and (max-width: $tb) {
+    @content;
+  }
+}
+//スマホ
+@mixin mobile {
+  @media screen and (max-width: $mb) {
+    @content;
+  }
+}
+
+//*------------------*
+//*  font-size定義
+//*------------------*
+//$sizeにpx表示を入れて使う
+
+@mixin rem($size) {
+  font-size: $size + px; /*IE9以前に対応する*/
+  font-size: ($size / 16) + rem;
+}
+
+//*------------------*
+//*  base(共通)
+//*------------------*
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  overflow-y: scroll;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  @include rem(18);
+  line-height: 1.44;
+  letter-spacing: 0.1em;
+  color: $font-color;
+  font-family: $font-main;
+
+  &.noscroll{
+    overflow: hidden;
+  }
+}
+
+img, svg {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+svg{
+  fill:currentColor;
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color:currentColor;
+  display: inline-block;
+  
+
+  :hover,
+  :focus{
+    opacity: .7;
+    transition: .3s;
+  }
+}
+
+button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+//sectionの共通inner設定
+.section{
+  margin-top: 160px;
+
+  @include tablet(){
+    margin-top:100px;
+  }
+
+  @include mobile(){
+    margin-top:60px;
+  }
+}
+
+// .bg-pink{
+//   padding: 120px 0;
+//   background-color: $base-color;
+
+//   @include mobile(){
+//     padding: 60px 0;
+//   }
+// }
+
+.section__inner {
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 0 2vw;
+  // text-align: center;
+  // position: relative;
+}
+
+// .section__ttl{
+//   font-family: $font-main;
+//   font-weight: bold;
+//   @include rem(30);
+//   line-height: 1.5;
+//   letter-spacing: 0.2em;
+//   color: $font-color;
+
+//   @include tablet(){
+//     @include rem(22);
+//     line-height: .7;
+//     letter-spacing: 0.1em;
+//   }
+
+// }
+
